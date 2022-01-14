@@ -10,9 +10,10 @@ Its a python micro-framework to develop web application.
 
 <details>
 <summary> What is framework vs micro framework?</summary>
-Web Framework - Collection of libraries and modules, so a developer doesnt need to worry about low-level details like thread management, protocol etc
 
-Micro Framework - Mimimalistic version of full fledged framework. But flask has extentions to parts where there are limitations.
+<b>Web Framework</b> - Collection of libraries and modules, so a developer doesnt need to worry about low-level details like thread management, protocol etc
+
+<b>Micro Framework</b> - Mimimalistic version of full fledged framework. But flask has extentions to parts where there are limitations.
 
 </details>
 
@@ -71,13 +72,10 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route()
-
 def home("/"):
-
     return "This is home page"
 
 if __name__ == __main__
-
     app.run(debug=True)
 ```
 
@@ -85,15 +83,14 @@ if __name__ == __main__
 
 <details>
 <summary> route() how to use and what it does ? </summary>
+
 `route()` is a decorator in flask. 
 
 <b>How to use it :</b>
 
 ```
 @app.route("/")
-
 def home():
-
     return "Home page"
 ```
 
@@ -114,15 +111,11 @@ Adds endpoint to app object
 
 ```
 @app.route(/not_allowed)
-
 def not_allowed():
-
     return "<h1> This page is restricted for normal user</h1>"
 
 @app.route(/admin)
-
 def admin():
-
     return redirect(url_for("not_allowed"))
 ```
 </details>
