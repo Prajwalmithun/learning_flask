@@ -75,7 +75,7 @@ app = Flask(__name__)
 def home("/"):
     return "This is home page"
 
-if __name__ == __main__
+if __name__ == "__main__":
     app.run(debug=True)
 ```
 
@@ -119,3 +119,63 @@ def admin():
     return redirect(url_for("not_allowed"))
 ```
 </details>
+
+## Day 2
+
+<details>
+<summary> What are templates? What does it contains? </summary>
+
+`templates` is a directory, which contains static files like HTML, CSS. 
+
+And it also contains placeholders for dynamic values( for eg: using jinja expression to get values from flask to html files)
+
+</detals>
+
+<details>
+<summary> What is Template Library? Which template library is used in flask? </summary>
+
+</detals>
+
+<details>
+<summary> render_template() ? Syntax and Usage OR How to render html from flask and how to pass value from backend to frontend? </summary>
+
+`render_template()` - function which renders frontend files(HTML, CSS) to user's web browser. 
+
+```
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("templates/index.html")
+
+@app.route("/<usr>")
+def user(usr):
+    return render_template("templates/display.html", content=usr, msg="Hello")
+```
+
+</detals>
+
+<details>
+<summary> How to write python code in html ?</summary>
+
+We use <b>Jinja expressions</b> to write kindaa python code in templates/*.html files
+
+<b>Example</b> 
+
+display.html
+
+```
+<html>
+<head> 
+    <title> Displays your name </title>
+</head>
+<body>
+    {% for x in range(10) %}
+        <p> {{msg}} {{usr}}
+    {% endfor %}
+</body>
+</html>
+```
+</detals>
