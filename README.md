@@ -129,12 +129,12 @@ def admin():
 
 And it also contains placeholders for dynamic values( for eg: using jinja expression to get values from flask to html files)
 
-</detals>
+</details>
 
 <details>
 <summary> What is Template Library? Which template library is used in flask? </summary>
 
-</detals>
+</details>
 
 <details>
 <summary> render_template() ? Syntax and Usage OR How to render html from flask and how to pass value from backend to frontend? </summary>
@@ -155,7 +155,7 @@ def user(usr):
     return render_template("templates/display.html", content=usr, msg="Hello")
 ```
 
-</detals>
+</details>
 
 <details>
 <summary> How to write python code in html ?</summary>
@@ -178,4 +178,4 @@ display.html
 </body>
 </html>
 ```
-</detals>
+</details>
