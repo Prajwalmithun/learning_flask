@@ -181,7 +181,7 @@ display.html
 </details>
 
 
-Day3
+## Day3
 
 Template inheritance ? 
 
