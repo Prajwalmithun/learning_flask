@@ -179,3 +179,113 @@ display.html
 </html>
 ```
 </details>
+
+
+Day3
+
+Template inheritance ? 
+
+Templates are like, writing a blueprint. 
+
+- How to use in flask ? 
+Under `templates` directory we can create templates in flask. for example base.html etc so child pages can inherit base.html
+
+What is base template , child . ?
+
+Base template = like a master file, how entire website/webpages should look like. Purpose if for website uniformity (like theme in vague terms)
+
+Child - webpages that inherit from the base template
+
+base.html -> index.html
+
+How to over-ride child template ? like how to make child template show different content but the theme
+should be same as base template.
+
+in base.html
+
+<title> {% block title %}{% endblock %} </title>
+
+<body>
+{% block content %}{% endblock %}  
+</body>
+
+in child.html
+{% extends "base.html" %}
+{% block title %}Welcome to child page {% endblock %}
+{% block content%}
+
+<h1>This is child!</h1>
+
+{% endblock %} 
+ 
+What is Bootstrap ?
+
+For styling
+How to use it ? or how to include in our project ?
+
+
+
+Day 4======
+GET and POST request
+
+How to use it in flask ?
+
+package to import 
+request
+
+from flask import request
+
+USage:
+
+Say this is the html file
+
+login.html
+<form>
+	<p>Username</p> 
+		<input type="text" name="nm">
+	<p>Password</p>
+		<input type="password" name="ps">
+	<input type="submit" value="Login">	
+	
+</form>
+
+in day4.py 
+
+from flask import request
+
+@app.route("/login")
+def login():
+	if request.method == "POST":
+		username = request.form("nm")
+		password = request.form("ps")
+		return f"{username} {password}"
+		
+		
+Day 5
+What are sessions ?
+
+How to use in flask
+	1. importing session 
+	# from flask import session
+
+	2. Adding a secret key 
+	# app.secret_key = "some complex key"
+		
+	rem: session is a dictonary. 
+	3. Add a key to session dictonary and assign the value given by the user
+	# session["username_key"] = request.form["nm"]
+	
+	4. pass it to different routes
+	 
+Are sessions permanent ? 
+
+
+If they are temporary how to make them permanent ?
+	1. importing datetime.timedelta
+	# from datetime import timedelta
+	
+	2. Fix some duration for the session 
+	app.permanent_session_lifetime = timedelta(days=1)
+	
+	3. After getting the value from user (previous step3) make session permanent
+	session.permanent = True
