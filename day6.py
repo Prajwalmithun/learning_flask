@@ -1,5 +1,5 @@
 from distutils.log import debug
-from flask import Flask, redirect, render_template, request, url_for, session
+from flask import Flask, redirect, render_template, request, url_for, session, flash
 from datetime import timedelta
 
 
@@ -12,6 +12,7 @@ app.permanent_session_lifetime = timedelta(days=1)
 
 @app.route("/")
 def home():
+    #flash("You are in home")
     return render_template("index.html")
 
 @app.route("/login",methods=["POST", "GET"])
@@ -25,10 +26,12 @@ def login():
         session["username"] = user
         #password = request.form["ps"]
         #return redirect(url_for("user",usr=user))
+        flash("Login Succesfull")
         return redirect(url_for("user"))
     
     else:
         if "username" in session:
+            flash("Already Logged in!")
             return redirect(url_for("user"))
 
         return render_template("login.html")
@@ -38,17 +41,21 @@ def user():
     #password = request.form["ps"]
     if "username" in session:
         usr = session["username"]
-        return f"<h1> HI {usr} </h1> "
+        return render_template("user.html",user=usr)
     else:
+        flash("You are not logged in")
         return redirect(url_for("login"))
 
 @app.route("/logout")
 def logout():
-
-    # deleting the key "username" from dictory called "session"
-    session.pop("username", None)
     
-    # after clearing the session, we are redirecting the user to login page
+    if "username" in session:
+    # deleting the key "username" from dictory called "session"
+        session.pop("username", None)
+        flash("You have been logged out!")
+    else:
+        flash("Please Login")
+        # after clearing the session, we are redirecting the user to login page
     return redirect(url_for("login"))
 
 

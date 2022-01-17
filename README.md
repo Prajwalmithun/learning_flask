@@ -289,3 +289,26 @@ If they are temporary how to make them permanent ?
 	
 	3. After getting the value from user (previous step3) make session permanent
 	session.permanent = True
+
+
+Day 6
+
+- What is message flashing ?
+
+- How to use in flask ?
+
+in .html file
+
+{% with messages = get_falshed_messages() %}
+	{% if messages %}
+		{% for msg in messages %}
+			<p>{{msg}}</p>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+in .py file
+
+from flask import flash
+
+flash("Login succesfull","info")

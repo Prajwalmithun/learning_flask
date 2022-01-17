@@ -4,9 +4,11 @@
 
 
 {% block content%}
-    {% for x in range(10) %}
-        <h1> Welcome to {{msg}} page!!! </h1>
-    {% endfor %}
+
+  {% for x in range(10) %}
+    <h1> Welcome to {{msg}} page!!! </h1>
+  {% endfor %}
+
 {% endblock %}
 
 
@@ -28,19 +30,19 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Home Page</title>
 -->
-  <!-- Getting the value of content and id from backend(flask) -->
-  <!--<h1> Hello! {{content}} {{id}}</h1> -->  
-   
+<!-- Getting the value of content and id from backend(flask) -->
+<!--<h1> Hello! {{content}} {{id}}</h1> -->
 
-  <!-- We can write some sort of python code in html-->
- <!-- {% for x in range(10) %}
+
+<!-- We can write some sort of python code in html-->
+<!-- {% for x in range(10) %}
     {% if x%2 == 0 %}  
         <p> {{x}} </p>
     {% endif %}
   {% endfor %} -->
-  
-  <!-- Getting the list from backend and publishing in frontend-->
- <!-- {% for i in list %}
+
+<!-- Getting the list from backend and publishing in frontend-->
+<!-- {% for i in list %}
     <p> {{i}} </p>
   {% endfor %}
 </head>
