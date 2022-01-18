@@ -2,7 +2,7 @@
 
 # My Learning Logs
 
-## Day 1
+# Day 1 (Installing flask, creating and starting app)
 <details>
 <summary> What is Flask? </summary>
 Its a python micro-framework to develop web application.
@@ -120,7 +120,7 @@ def admin():
 ```
 </details>
 
-## Day 2
+# Day 2 (About templates )
 
 <details>
 <summary> What are templates? What does it contains? </summary>
@@ -181,7 +181,7 @@ display.html
 </details>
 
 
-Day3 ()
+# Day3 (About creation and rendering the templates )
 
 <details> 
 <summary> Template inheritance ?  </summary>
