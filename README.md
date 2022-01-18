@@ -181,27 +181,40 @@ display.html
 </details>
 
 
-Day3
+Day3 ()
 
-Template inheritance ? 
+<details> 
+<summary> Template inheritance ?  </summary>
 
-Templates are like, writing a blueprint. 
+Templates are like, writing a blueprint.
+Rather than typing all the contents again and again, we are only typing the changed contents and inheriting the contents that is common across the web pages
 
-- How to use in flask ? 
+</details>
+
+<details> 
+<summary> How to use templates in flask ? </summary>
+
+<b>Creation of templates</b>
 Under `templates` directory we can create templates in flask. for example base.html etc so child pages can inherit base.html
 
-What is base template , child . ?
+</details>
+
+<details> 
+<summary>What is base template , child . ? </summary>
 
 Base template = like a master file, how entire website/webpages should look like. Purpose if for website uniformity (like theme in vague terms)
 
 Child - webpages that inherit from the base template
 
 base.html -> index.html
+</details>
 
-How to over-ride child template ? like how to make child template show different content but the theme
-should be same as base template.
 
-in base.html
+<details> 
+<summary>How to over-ride child template ? like how to make child template show different content but the theme
+should be same as base template. </summary>
+
+<b>in base.html</b>
 
 <title> {% block title %}{% endblock %} </title>
 
@@ -209,7 +222,7 @@ in base.html
 {% block content %}{% endblock %}  
 </body>
 
-in child.html
+<b>in child.html</b>
 {% extends "base.html" %}
 {% block title %}Welcome to child page {% endblock %}
 {% block content%}
@@ -217,29 +230,41 @@ in child.html
 <h1>This is child!</h1>
 
 {% endblock %} 
+
+</details>
+
+
+<details> 
+<summary> What is Bootstrap ? </summary>
+
+For styling, kind of advanced version of CSS
+</details>
+
+<details> 
+<summary> How to use it ? or how to include in our project ? </summary>
+
+</details>
+
+# Day 4 (About methods GET, POST)
+<details> 
+<summary> GET and POST request </summary>
+
+</details>
  
-What is Bootstrap ?
+<details> 
+<summary> How to use it in flask ? </summary>
 
-For styling
-How to use it ? or how to include in our project ?
-
-
-
-Day 4======
-GET and POST request
-
-How to use it in flask ?
-
-package to import 
-request
+<b>Import the package(request)</b> 
 
 from flask import request
 
-USage:
+<b>Usage:</b>
 
 Say this is the html file
 
-login.html
+<b>login.html</b>
+
+```
 <form>
 	<p>Username</p> 
 		<input type="text" name="nm">
@@ -248,9 +273,11 @@ login.html
 	<input type="submit" value="Login">	
 	
 </form>
+```
 
-in day4.py 
+<b>in day4.py</b> 
 
+```
 from flask import request
 
 @app.route("/login")
@@ -259,46 +286,79 @@ def login():
 		username = request.form("nm")
 		password = request.form("ps")
 		return f"{username} {password}"
-		
-		
-Day 5
-What are sessions ?
+```
+</details>
 
-How to use in flask
+# Day 5 (About sessions)
+
+<details> 
+<summary> What are sessions ? </summary>
+
+Kind of Data structure to hold temporary values. In python, session is a dictonary.
+
+</details>
+
+
+<details> 
+<summary> How to use in flask </summary>
 	1. importing session 
-	# from flask import session
+	
+	`from flask import session`
 
 	2. Adding a secret key 
-	# app.secret_key = "some complex key"
+	
+	`app.secret_key = "some complex key"`
 		
 	rem: session is a dictonary. 
+	
 	3. Add a key to session dictonary and assign the value given by the user
-	# session["username_key"] = request.form["nm"]
+	
+	`session["username_key"] = request.form["nm"]`
 	
 	4. pass it to different routes
-	 
-Are sessions permanent ? 
+
+</details>
 
 
-If they are temporary how to make them permanent ?
+<details> 
+<summary> Are sessions permanent ?  </summary>
+No by default.
+
+But we can make it permanent
+
+</details>
+
+
+<details> 
+<summary> If they are temporary how to make them permanent ? </summary>
+
 	1. importing datetime.timedelta
-	# from datetime import timedelta
+	
+	`from datetime import timedelta`
 	
 	2. Fix some duration for the session 
-	app.permanent_session_lifetime = timedelta(days=1)
+	
+	`app.permanent_session_lifetime = timedelta(days=1)`
 	
 	3. After getting the value from user (previous step3) make session permanent
-	session.permanent = True
+	
+	`session.permanent = True`
 
+</details>
 
-Day 6
+# Day 6 (About Flashing messages)
 
-- What is message flashing ?
+<details> 
+<summary> What is message flashing ? </summary>
 
-- How to use in flask ?
+</details>
 
-in .html file
+<details> 
+<summary> How to use in flask ? </summary>
 
+<b>in .html file</b>
+
+```
 {% with messages = get_falshed_messages() %}
 	{% if messages %}
 		{% for msg in messages %}
@@ -306,9 +366,121 @@ in .html file
 		{% endfor %}
 	{% endif %}
 {% endwith %}
+```
+<b>in .py file</b>
 
-in .py file
-
+```
 from flask import flash
 
 flash("Login succesfull","info")
+```
+
+</details>
+
+# Day 7 (About SQLAlchemy Database)
+
+<details> 
+<summary> What is SQLAlchemy ? SQL vs SQLAlchemy ? </summary>
+
+SQLAlchemy is python library for creating communication between python program and database.
+
+This library is used as Object Relational Mapper (ORM). ORM means to 
+converts 
+
+```
+python classes -> table in RDBMS
+
+function calls -> SQL statements 
+```
+
+SQL => Its query language 
+
+SQLAlchemy => is python library for managing kind of sql database.
+
+
+</details>
+
+<details> 
+<summary> How to install it ? </summary>
+
+`pip3 install flask-sqlalchemy`
+
+</details>
+
+<details> 
+<summary> How to connect to flask to database ? </summary>
+
+1. Import the package
+`from flask_sqlalchemy import SQLAlchemy`
+
+2. Configure and create db object
+
+```
+# configuring SQLAlchemy 'users' -> name of the table in SQL
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+```
+
+```
+# Creating db object
+db = SQLAlchemy(app)
+```
+
+3. Creating the class(table)
+
+```
+# In this example users = tables, Column names = id(int, primary key), name(string), email(string) 
+
+class users(db.Model):
+    _id = db.Column("id", db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+
+    # for initilizing default values
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+```
+
+</details>
+
+<details> 
+<summary> How to do operations on database (CRUD: Create, Update, Read, Delete ) ? </summary>
+
+</details>
+
+
+
+
+
+
+ 
+
+
+
+
+
+		
+		
+
+
+
+	
+	 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
