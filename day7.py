@@ -36,6 +36,11 @@ def home():
     #flash("You are in home")
     return render_template("index.html")
 
+
+@app.route("/view")
+def view():
+    return render_template("view.html", values=users.query.all())
+
 @app.route("/login",methods=["POST", "GET"])
 def login():
     if request.method == "POST":
@@ -45,6 +50,17 @@ def login():
         
         # Cretating a dict called "session", key = "username", value = <value from html>
         session["username"] = user
+
+        # Saving the user details to database, if the users doesnt exist in DB
+        found_user = users.query.filter_by(name=user).first()
+        if found_user:
+            # grab the email and store in session as user exist in DB
+            session["email"] = found_user.email
+        else:
+            usr = users(user,"")
+            db.session.add(usr)     # kind of like a staging area
+            db.session.commit()  # actual pushing the data to DB
+
         #password = request.form["ps"]
         #return redirect(url_for("user",usr=user))
         flash("Login Succesfull")
@@ -67,6 +83,11 @@ def user():
         if request.method == "POST":
             email = request.form["h_email"]
             session["email"] = email
+
+            # ????
+            found_user = users.query.filter_by(name=usr).first()
+            found_user.email = email 
+            db.session.commit()
             flash("Email saved!")
 
         else:
