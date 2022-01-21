@@ -1,4 +1,4 @@
-# Learning flask
+# Learning flask daily
 
 # My Learning Logs
 
