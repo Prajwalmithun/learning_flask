@@ -110,11 +110,11 @@ Adds endpoint to app object
 <b>Usage</b>
 
 ```
-@app.route(/not_allowed)
+@app.route("/not_allowed")
 def not_allowed():
     return "<h1> This page is restricted for normal user</h1>"
 
-@app.route(/admin)
+@app.route("/admin")
 def admin():
     return redirect(url_for("not_allowed"))
 ```
