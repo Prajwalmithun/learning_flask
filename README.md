@@ -125,7 +125,7 @@ def admin():
 <details>
 <summary> What are templates? What does it contains? </summary>
 
-`templates` is a directory, which contains static files like HTML, CSS. 
+`templates` is a directory, which contains static files like HTML. CSS and JS files will be under static folder 
 
 And it also contains placeholders for dynamic values( for eg: using jinja expression to get values from flask to html files)
 
