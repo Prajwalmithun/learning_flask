@@ -287,8 +287,8 @@ from flask import request
 @app.route("/login")
 def login():
 	if request.method == "POST":
-		username = request.form("nm")
-		password = request.form("ps")
+		username = request.form["nm"]
+		password = request.form["ps"]
 		return f"{username} {password}"
 ```
 </details>
