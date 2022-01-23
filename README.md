@@ -215,14 +215,17 @@ base.html -> index.html
 should be same as base template. </summary>
 
 <b>in base.html</b>
-
+```
 <title> {% block title %}{% endblock %} </title>
 
 <body>
 {% block content %}{% endblock %}  
 </body>
-
+```
+	
 <b>in child.html</b>
+
+```	
 {% extends "base.html" %}
 {% block title %}Welcome to child page {% endblock %}
 {% block content%}
@@ -230,7 +233,8 @@ should be same as base template. </summary>
 <h1>This is child!</h1>
 
 {% endblock %} 
-
+```
+	
 </details>
 
 
@@ -265,7 +269,7 @@ Say this is the html file
 <b>login.html</b>
 
 ```
-<form>
+<form action="#" method="POST">
 	<p>Username</p> 
 		<input type="text" name="nm">
 	<p>Password</p>
